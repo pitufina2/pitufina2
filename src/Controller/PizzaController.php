@@ -14,12 +14,13 @@ class PizzaController extends Controller
     {
     	
     	$vector = array ("Margarita", "Carbonara", "Hawaiana");
-    	$vectordos = array ("tomate", "atun","queso");
+    	
         return $this->render('pizza/index.html.twig', [
             'controller_name' => 'PizzaController',
             'minombre' => 'Jesus',
-            'pizzas'=> $vector,
-            'ingredientes'=> $vectordos
+            'pizzas'=> $vector
+            
+           
         ]);
     }
 
@@ -28,10 +29,47 @@ class PizzaController extends Controller
      */
     public function nuevaPizza()
     {
+    	$ciudades = array ("Badajoz", "Caceres", "Merida");
+    	
+        return $this->render('pizza/nuevo.html.twig', [
+         'ciudades'=> $vectorciudades   
+        ]);
+    }
+    /**
+     * @Route("/pizza/mostrar", name="pizza_mostrar")
+     */
+    public function mostrarPizza()
+    {
     	
     	
-        return $this->render('pizza/index.html.twig', [
+        return $this->render('pizza/mostrar.html.twig', [
             
         ]);
     }
+
+	/**
+     * @Route("/pizza/editar", name="pizza_editar")
+     */
+    public function editarPizza()
+    {
+    	
+    	
+        return $this->render('pizza/editar.html.twig', [
+            
+        ]);
+    }
+		/**
+     * @Route("/pizza/calcular/{precio}", name="pizza_calcular", requirements={"precio"="\d+"} )
+   
+     */
+    public function calcularPizza($precio)
+    {
+    	
+    	$final = $precio * 1.21;
+        return $this->render('pizza/nombre.html.twig', [
+        	'preciofinal'=> $final
+            
+        ]);
+    }
+   
 }

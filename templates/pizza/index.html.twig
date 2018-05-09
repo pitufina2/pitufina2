@@ -14,17 +14,14 @@
     Este es mi primer controlador de {{ minombre}}
     <ul>
     	{% for pizza in pizzas %}
-       	 <li>{{ pizza|upper }}</li>
+       	 <li>{{ pizza|capitalize }}</li>
     	{% endfor %}
 	</ul>
 
 
-    <ul>
-    	{% for ingred in ingredientes %}
-       	 <li>{{ pizza|upper }}</li>
-    	{% endfor %}
-	</ul>
-	
+   <a href="{{ path('pizza_mostrar') }}"> Mostrar </a> 	
+	<a href="{{ path('pizza_nuevo') }}"> Nuevo </a>
+	<a href="{{ path('pizza_editar') }}"> Editar </a> 
 
 
 </div>
