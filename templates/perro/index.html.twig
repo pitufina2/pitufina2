@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+
 
 {% block body %}
+
+
+<h1>Listado de amigos perros</h1>
+<ul>
+    {% for perro in vectorperros %}
+        <li>{{ perro.nombre}} - {{perro.raza}}</li>
+    {% endfor %}
+</ul>
+
+
+<a href ="{{path ('perro_nuevo')}}" >Añadir perro</a>
+
+
+
 
 {% endblock %}

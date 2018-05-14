@@ -21,6 +21,14 @@ class Perro
      */
     private $nombre;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $raza;
+
+
+    
+
     public function getId()
     {
         return $this->id;
@@ -34,6 +42,18 @@ class Perro
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getRaza(): ?string
+    {
+        return $this->raza;
+    }
+
+    public function setRaza(string $raza): self
+    {
+        $this->raza = $raza;
 
         return $this;
     }
