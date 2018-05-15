@@ -30,7 +30,7 @@ class IngredienteController extends Controller
     public function listaIngrediente()
     {
         return $this->render('ingrediente/lista.html.twig', [
-            'controller_name' => 'IngredienteController'
+            
         ]);
     }
 
@@ -41,7 +41,7 @@ class IngredienteController extends Controller
     public function mostrarIngrediente()
     {
         return $this->render('ingrediente/mostrar.html.twig', [
-            'controller_name' => 'IngredienteController'
+            
         ]);
     }
 
@@ -52,7 +52,7 @@ class IngredienteController extends Controller
     public function editarIngrediente()
     {
         return $this->render('ingrediente/editar.html.twig', [
-            'controller_name' => 'IngredienteController'
+           
         ]);
     }
 }

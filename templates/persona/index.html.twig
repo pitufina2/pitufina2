@@ -3,12 +3,15 @@
 
 {% block body %}
 
+<h1>Listado de personas</h1>
+<ul>
+    {% for persona in personas %}
+        <li>{{ persona.nombre }} - {{ persona.edad }} - {{persona.telefono}} - {{persona.ciudad}}</li>
+    {% endfor %}
+</ul>
 
-{{ form_start(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
-{{ form_widget(formulario) }}
-{{ form_end(formulario) }}
-
-
-
+<a href="{{ path('persona_nuevo') }}">Añadir persona</a>
 
 {% endblock %}
+
+

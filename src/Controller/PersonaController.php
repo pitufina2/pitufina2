@@ -19,27 +19,46 @@ class PersonaController extends Controller
      */
     public function index(Request $request)
     {
-        $persona = new persona();
+        $persona = new Persona();
         $formu = $this->createForm(PersonaType::class, $persona);
         $formu->handleRequest($request);
 
         if ($formu->isSubmitted()) {
 
-            $nombre = $request->request->get('nombre');
-            $edad = $request->request->get('edad');
-            $telefono = $request->request->get('telefono');
+            $em = $this->getDoctrine()->getManager();
 
-            dump ($nombre);
-            dump ($edad);
-            dump ($telefono);
-            dump ($persona);
+            $em->persist($persona);
 
-            return $this->render('persona/final.html.twig', [
-            ]);
+            $em->flush();
+
+
+            return $this->redirectToRoute('persona_lista');
+          
         }
 
-        return $this->render('persona/index.html.twig', [
+        return $this->render('persona/nuevo.html.twig', [
             'formulario' => $formu->createView(),
+        ]);
+        
+    }
+
+    /**
+     * @Route("/lista", name="persona_lista")
+     */
+    public function listado()
+    {
+
+        //$this->cargarDatos();
+        $repo = $this->getDoctrine()->getRepository (Persona::class);
+
+        $personas = $repo->findAll();    
+
+     
+
+        return $this->render('persona/index.html.twig', [
+            'personas' => $personas,
+             
+            
         ]);
     }
 }

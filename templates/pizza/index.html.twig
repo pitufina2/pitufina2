@@ -16,12 +16,14 @@
     	{% for pizza in pizzas %}
        	 <li>{{ pizza|capitalize }}</li>
     	{% endfor %}
-	</ul>
+	 </ul>
 
-
-   <a href="{{ path('pizza_mostrar') }}"> Mostrar </a> 	
-	<a href="{{ path('pizza_nuevo') }}"> Nuevo </a>
-	<a href="{{ path('pizza_editar') }}"> Editar </a> 
+   <ul>
+      <a href="{{ path('pizza_mostrar') }}"> Mostrar </a>
+      <a href="{{ path('pizza_nuevo') }}"> Nuevo </a>
+      <a href="{{ path('pizza_editar') }}"> Editar </a> 
+      
+    </ul>
 
 
 </div>

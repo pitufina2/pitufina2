@@ -27,7 +27,7 @@ class PizzaController extends Controller
     }
 
     /**
-     * @Route("/nueva", name="pizza_nueva")
+     * @Route("/nuevo", name="pizza_nuevo")
      */
     public function nuevaPizza()
     {
@@ -38,7 +38,7 @@ class PizzaController extends Controller
         ]);
     }
     /**
-     * @Route("/show", name="pizza_mostrar")
+     * @Route("/mostrar", name="pizza_mostrar")
      */
     public function mostrarPizza()
     {

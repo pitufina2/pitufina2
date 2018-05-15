@@ -22,8 +22,7 @@ class PerroController extends Controller
     {
 
 		//$this->cargarDatos();
-        $repo = $this->getDoctrine()->
-            getRepository (Perro::class);
+        $repo = $this->getDoctrine()->getRepository (Perro::class);
         $vectorperros = $repo->findAll();    
 
         dump ($vectorperros);
