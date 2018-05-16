@@ -9,11 +9,11 @@
     
     <ul>
         {% for producto in productos %}
-        	<li>{{ producto.nombre }} - {{ producto.precio }} - {{ producto.categoria.nombre}} {{ dump(producto.categoria)}} </li>
+        	<li>{{ producto.nombre }} - {{ producto.precio }} - {{ producto.categoria.nombre}} {#{{ dump(producto.categoria)}}#} </li>
     	{% endfor %}
     </ul>
 
-	{{ dump(productos)}}
+{#{{ dump(productos)}}#}
 
 
 
