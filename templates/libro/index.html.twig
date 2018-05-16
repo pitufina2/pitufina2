@@ -9,10 +9,11 @@
 
     <ul>
         {% for libro in libros %}
-        	<li>{{ libro.titulo }} - {{ libro.edicion }} - {{ libro.numpaginas }} </li>
+        	<li>{{ libro.titulo }} - {{ libro.edicion }} - {{ libro.numpaginas }} - {{libro.autor.nombre}}</li>
 		{% endfor %}
      </ul>
   <a href="{{ path('libro_nuevo') }}">Añadir libro</a>
-  
+  <a href="{{ path('autor_lista') }}">Añadir autor</a>
+	
 
 {% endblock %}

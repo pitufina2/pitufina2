@@ -38,9 +38,15 @@ class Autor
      */
     private $Libro;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Libro", mappedBy="autor")
+     */
+    private $libros;
+
     public function __construct()
     {
         $this->Libro = new ArrayCollection();
+        $this->libros = new ArrayCollection();
     }
 
     public function getId()
@@ -113,5 +119,13 @@ class Autor
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Libro[]
+     */
+    public function getLibros(): Collection
+    {
+        return $this->libros;
     }
 }

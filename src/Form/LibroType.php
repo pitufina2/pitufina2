@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Autor;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class LibroType extends AbstractType
 {
@@ -16,6 +18,15 @@ class LibroType extends AbstractType
             ->add('titulo')
             ->add('edicion')
             ->add('numpaginas')
+            ->add('autor',EntityType::class,array(
+
+                'class' => Autor::class,
+
+                'choice_label' => function ($autor) {
+
+                    return $autor->getNombre();
+
+            }))
             ->add('save', SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-success'),
         ));
