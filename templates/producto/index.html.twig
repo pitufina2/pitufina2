@@ -14,6 +14,7 @@
     <ul>
         {% for producto in productos %}
         	<li>{{ producto.nombre }} - {{ producto.precio }} - {{ producto.categoria.nombre}} {#{{ dump(producto.categoria)}}#} </li>
+        	
     	{% endfor %}
     </ul>
 
@@ -24,7 +25,12 @@
 	<a href="{{ path('producto_nuevo') }}">Añadir producto</a>
 	
 	<a class="btn btn-danger" href="{{ path('categoria_lista') }}">Lista de categoria</a>
-	
+
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Nuevo producto
+	</button>
+	{% include 'producto/modal.html.twig'%}
+
 {% endblock %}
 
 {% block javascripts %}

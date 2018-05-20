@@ -31,8 +31,6 @@ class ProductoController extends Controller
 
             $em->flush();
 
-
-            return $this->redirectToRoute('producto_lista');
           
         }
         return $this->render('producto/nuevo.html.twig', [
@@ -43,19 +41,26 @@ class ProductoController extends Controller
     /**
      * @Route("/lista", name="producto_lista")
      */
-    public function listado()
+    public function listado(Request $request)
     {
 
         //$this->cargarDatos();
         $repo = $this->getDoctrine()->
             getRepository (Producto::class);
 
-        $producto = $repo->findAll();    
+
+        $producto = $repo->findAll();  
+
+        $producto = new Producto();
+        $formu = $this->createForm(ProductoType::class, $producto);
+        $formu->handleRequest($request);
+  
 
      
 
         return $this->render('producto/index.html.twig', [
             'productos' => $producto,
+            'formulario'=> $formu->createView()
              
             
         ]);

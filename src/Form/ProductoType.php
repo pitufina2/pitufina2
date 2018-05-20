@@ -3,11 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Producto;
+use App\Entity\Categoria;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Categoria;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
@@ -33,7 +33,7 @@ class ProductoType extends AbstractType
                 'choice_label' => function ($categoria) {
                     return $categoria->getNombre();
             }))
-            ->add('save', SubmitType::class, array(
+            ->add('guardar', SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-success'),
         ));                
 
