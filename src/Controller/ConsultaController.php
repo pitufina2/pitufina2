@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Consulta;
 use App\Form\ConsultaType;
@@ -51,7 +52,7 @@ class ConsultaController extends Controller
         //$this->cargarDatos();
         $repo = $this->getDoctrine()->getRepository (Consulta::class);
 
-        $consultas = $repo->findAll();    
+        $consulta = $repo->findAll();    
 
      
 
@@ -62,3 +63,5 @@ class ConsultaController extends Controller
         ]);
     }
 }
+
+

@@ -17,7 +17,7 @@ class Consulta
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=100)
      */
     private $titulo;
 
@@ -27,7 +27,7 @@ class Consulta
     private $fechahora;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $descripcion;
 
@@ -37,7 +37,7 @@ class Consulta
     private $importe;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Mascota", inversedBy="Consultas")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Mascota", inversedBy="consultas")
      * @ORM\JoinColumn(nullable=false)
      */
     private $mascota;

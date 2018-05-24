@@ -61,7 +61,7 @@ class PizzaController extends Controller
             
         ]);
     }
-		/**
+	/**
      * @Route("/detalle/{posicion}", name="tienda_detalle", requirements={"posicion"="\d+"} )
      */
     public function calcularPizza($precio)

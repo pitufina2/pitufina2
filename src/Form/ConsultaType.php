@@ -2,13 +2,13 @@
 
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Mascota;
 use App\Entity\Consulta;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 
@@ -18,8 +18,8 @@ class ConsultaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
-
             ->add('titulo')
             ->add('fechahora')
             ->add('descripcion')
@@ -30,6 +30,8 @@ class ConsultaType extends AbstractType
                 'choice_label' => function ($categoria) {
                     return $mascota->getNombre();
             }))
+
+
             ->add('save', SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-success'),
         ));

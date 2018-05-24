@@ -9,6 +9,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
+
+
+
 class MascotaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -25,6 +29,12 @@ class MascotaType extends AbstractType
             ->add('nombre')
             ->add('animal')
             ->add('fechanac')
+            
+            ->add('cliente',EntityType::class,array(
+                'class' => Cliente::class,
+                'choice_label' => function ($categoria) {
+                    return $cliente->getNombre();
+            }))
             ->add('save', SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-success'),
         ));

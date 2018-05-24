@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Detalle de clientes</h1>
+
+<li>{{ cliente.nombre }} - {{ cliente.direccion }} - {{cliente.cp }} - {{ cliente.ciudad }}</li>
+
+<ul>
+
+    {% for m in cliente.mascotas %}
+
+        <li>{{ m.nombre }} - {{ m.animal }} - {{ m.fechanac|date("m/d/Y")}} </li>
+
+    {% endfor %}
+
+</ul>
+
+<a href="{{ path('cliente_detalle') }}">Añadir cliente</a>
+
+{% endblock %}
+

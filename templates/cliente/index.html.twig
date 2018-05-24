@@ -3,13 +3,15 @@
 
 {% block body %}
 
-<h1>Listado de clientes</h1>
+<h1>Listado de clientes(index cliente)</h1>
 <ul>
     {% for cliente in clientes %}
         <li>{{ cliente.nombre }} - {{ cliente.direccion }} - {{cliente.cp}} - {{cliente.ciudad}}</li>
     {% endfor %}
 </ul>
 
-<a href="{{ path('cliente_nuevo') }}">Añadir cliente</a>
+<a href="{{ path('cliente_nuevo') }}">Añadir clientes</a>
 
 {% endblock %}
+
+

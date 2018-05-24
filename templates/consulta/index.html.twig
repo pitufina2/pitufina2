@@ -3,13 +3,14 @@
 
 {% block body %}
 
-<h1>Listado de consulta</h1>
+<h1>Listado de consultas</h1>
 <ul>
     {% for consulta in consultas %}
-        <li>{{ consulta.titulo }} - {{ consulta.fechahora }} - {{consulta.descripcion}} - {{consulta.importe}} - {{ consulta.mascota }} </li>
+        <li>{{ consulta.titulo }} - {{ consulta.fechahora }} - {{consulta.descripcion}} - {{consulta.importe}}{{consulta.mascota}}</li>
     {% endfor %}
 </ul>
 
 <a href="{{ path('consulta_nuevo') }}">Añadir consulta</a>
 
 {% endblock %}
+

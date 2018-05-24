@@ -29,7 +29,7 @@ class Cliente
     private $direccion;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=5)
      */
     private $cp;
 
