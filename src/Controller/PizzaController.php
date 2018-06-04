@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Controller;
-
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /**
-     * @Route("/pizza")
-     */
+* @Route("/pizza")
+*/
 class PizzaController extends Controller
 {
     /**
@@ -14,65 +12,64 @@ class PizzaController extends Controller
      */
     public function index()
     {
-    	
-    	$vector = array ("Margarita", "Carbonara", "Hawaiana");
-    	
+    	$vector = array("Margarita", "Carbonara", "Hawaiana");
+        
         return $this->render('pizza/index.html.twig', [
             'controller_name' => 'PizzaController',
             'minombre' => 'Jesus',
-            'pizzas'=> $vector
-            
-           
+            'pizzas' => $vector
         ]);
     }
-
     /**
      * @Route("/nuevo", name="pizza_nuevo")
      */
-    public function nuevaPizza()
+    public function nuevoPizza()
     {
-    	
-    	
+        $vectorciudades = array("Badajoz", "Caceres", "Mérida");
+        
         return $this->render('pizza/nuevo.html.twig', [
-           
+            'ciudades' => $vectorciudades
         ]);
     }
     /**
-     * @Route("/mostrar", name="pizza_mostrar")
-     */
-    public function mostrarPizza()
-    {
-    	
-    	
-        return $this->render('pizza/mostrar.html.twig', [
-            
-        ]);
-    }
-
-	/**
      * @Route("/editar", name="pizza_editar")
      */
     public function editarPizza()
     {
-    	
-    	$vectorciudades =  array ("Alburquerque", "Badajoz", "Sevilla");
-        return $this->render('pizza/editar.html.twig', [
-            'ciudades'=> $vectorciudades
+        
+        return $this->render('pizza/index.html.twig', [
             
         ]);
     }
-	/**
-     * @Route("/detalle/{posicion}", name="tienda_detalle", requirements={"posicion"="\d+"} )
+    /**
+     * @Route("/show", name="pizza_mostrar")
+     */
+    public function mostrarPizza()
+    {
+        
+        return $this->render('pizza/mostrar.html.twig', [ 
+            
+        ]);
+    }
+    /**
+     * @Route("/pizza/nombre/{parametro}", name="pizza_nombre")
+     */
+    public function nombrePizza($parametro)
+    {
+        
+        return $this->render('pizza/nombre.html.twig', [ 
+            'cliente' => $parametro
+        ]);
+    }
+    /**
+     * @Route("/calcular/{precio}", name="pizza_calcular", requirements={"precio"="\d+"})
      */
     public function calcularPizza($precio)
     {
-    	
-    	$final = $precio * 1.21;
-        return $this->render('pizza/nombre.html.twig', [
-        	'preciofinal'=> $final
-            
+        $final = $precio * 1.21;
+        return $this->render('pizza/nombre.html.twig', [ 
+            'preciofinal' => $final,
         ]);
     }
-    
-   
 }
+

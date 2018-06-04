@@ -1,62 +1,42 @@
 <?php
-
 namespace App\Controller;
-
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Categoria;
 use App\Form\CategoriaType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-
 /**
  * @Route("/categoria")
- */
+*/
 class CategoriaController extends Controller
 {
     /**
-     * @Route("/nuevo", name="categoria_nuevo")
+     * @Route("/lista", name="categoria_lista")
      */
-    public function index(Request $request)
+    public function index()
     {
-    	$categoria = new Categoria();
-        $formu = $this->createForm(CategoriaType::class, $categoria);
-        $formu->handleRequest($request);
-
-        if ($formu->isSubmitted()) {
-
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($categoria);
-
-            $em->flush();
-
-
-            return $this->redirectToRoute('categoria_lista');
-          
-        }
-        return $this->render('categoria/nuevo.html.twig', [
-            'formulario' => $formu->createView(),
+        $repo = $this->getDoctrine()->getRepository(Categoria::class);
+        $categorias = $repo->findAll();
+        return $this->render('categoria/index.html.twig', [
+            'categorias' => $categorias,
         ]);
     }
     /**
-     * @Route("/lista", name="categoria_lista")
+     * @Route("/nuevo", name="categoria_nuevo")
      */
-    public function listado()
+    public function nuevo(Request $request)
     {
-
-        //$this->cargarDatos();
-        $repo = $this->getDoctrine()->
-            getRepository (Categoria::class);
-
-        $categorias = $repo->findAll();    
-
-     
-
-        return $this->render('categoria/index.html.twig', [
-            'categorias' => $categorias,
-             
-            
-        ]);
+    	$cat = new Categoria();
+    	$formu = $this->createForm(CategoriaType::class, $cat);
+    	$formu->handleRequest($request);
+    	if ($formu->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cat);
+            $em->flush();
+			return $this->redirectToRoute('categoria_lista');
+    	}
+        return $this->render('categoria/nuevo.html.twig', [
+            'formulario' => $formu->createView(),
+        ]);            
     }
 }
